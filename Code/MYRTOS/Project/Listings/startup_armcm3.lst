@@ -396,13 +396,11 @@ ARM Macro Assembler    Page 7
 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
-ork --depend=.\objects\startup_armcm3.d -o.\objects\startup_armcm3.o -I"D:\Down
-Load\ADesk\7-FreeRTOS×ÊÁÏ£¨°üº¬³ÌÐòºÍ½Ì³Ì£©\STM32\1-½Ì³ÌµÚÒ»²¿·Ö³ÌÐò 9¸ö £º´Ó0µ
-½1½ÌÄãÐ´FreeRTOSÄÚºË\06£¬ÁÐ±íÓëÁÐ±íÏî\Project\RTE" -IC:\Keil_v5\ARM\PACK\ARM\CM
-SIS\4.3.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM3
-\Include --predefine="__UVISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --
-predefine="ARMCM3 SETA 1" --list=.\listings\startup_armcm3.lst RTE\Device\ARMCM
-3\startup_ARMCM3.s
+ork --depend=.\objects\startup_armcm3.d -o.\objects\startup_armcm3.o -ID:\Study
+\Code\MYRTOS\Project\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\CMSIS\Include -I
+C:\Keil_v5\ARM\PACK\ARM\CMSIS\4.3.0\Device\ARM\ARMCM3\Include --predefine="__UV
+ISION_VERSION SETA 515" --predefine="_RTE_ SETA 1" --predefine="ARMCM3 SETA 1" 
+--list=.\listings\startup_armcm3.lst RTE\Device\ARMCM3\startup_ARMCM3.s
 
 
 

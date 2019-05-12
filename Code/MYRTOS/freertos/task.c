@@ -1,5 +1,7 @@
 #include "task.h"
 
+extern StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters );
+
 TaskHandle_t xTaskCreateStatic( TaskFunction_t pxTaskCode,
 								const char * const pcName,//任务名称，字符串形式，方便调试
 								const uint32_t ulStackDepth,//任务栈大小，单位为字
@@ -47,6 +49,7 @@ static void prvInitialiseNewTask( TaskFunction_t pxTaskCode,//任务入口，即任务的
 	*(pxNewTCB->pcTaskName + x) = '\0';
 	
 	/*栈空间创建*/
+	pxPortInitialiseStack(pxTopOfStack,pxTaskCode,pvParameters);
 	
 	/*将句柄指向任务模块*/
 	if ((TaskHandle_t)pxCreatedTask != NULL)
