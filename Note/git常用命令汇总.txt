@@ -1,0 +1,51 @@
+﻿(1)笔记来源 https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192
+
+(2)登录
+git config [--global] user.name "name"
+git config [--global] user.email "test@xx.com"
+
+(3)查看当前登录的账号
+git config [--global] user.name 
+git config [--global] user.email 
+
+(4)提交到本地仓库
+git add <file>  #将文件添加到版本库中
+git commit -m <message>  {提交备注}  #将添加到版本库中的文件提交到仓库
+
+(5)版本回退相关
+git log  查看本地仓库的提交信息 
+git log --pretty=oneline 查看本地仓库的提交信息 ，展示在一行内
+git reset --hard HEAD^ 回退到上一个版本
+git reset --hard HEAD^^ 回退到上上个版本...	
+git reset --hard <commit id>  回退到指定ID的版本
+git reflog  按照时间顺序查找提交的ID，这样就可以回到之前的任何版本
+
+(6)修改管理
+git checkout -- <file>  将工作区间中的东西回退到编辑之前，暂存区域不为空，返回到暂存区的版本，否则返回仓库的版本
+git diff HEAD -- <file> 查看工作区和版本库之间的差异
+git reset HEAD <file>  add后，想要撤销暂存区中的内容，回退到版本库中的版本
+
+(7)删除文件
+git rm 确认删除
+git commit -m 提交删除
+git checkout -- <file> 撤销删除
+
+(8)远程库
+git remote add origin https://github.com/17875040752/My_Study.git   将本地仓库关联远程仓库
+<1>git push -u origin master    -u参数用于第一次提交时候建立关系，以后提交只用如下
+<2>git push origin master
+（8）<1><2>命令格式：git push <远程项目> <分支名称>
+
+(9)分支
+git checkout -b dev 创建分支
+git branch 查看分支
+git checkout master 回到master
+git merge dev 把分支dev内容合并到master上面
+
+
+
+补充说明
+(1)HEAD表示当前版本
+(2)文中的 [] 表示可选填写内容
+(3)工作区 ==(git add ...)==> 暂存区  ==(git commit)==> 版本库
+(4)git commit 只能提交被添加了的东西
