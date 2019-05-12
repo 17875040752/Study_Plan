@@ -42,8 +42,6 @@ git branch 查看分支
 git checkout master 回到master
 git merge dev 把分支dev内容合并到master上面
 
-
-
 补充说明
 (1)HEAD表示当前版本
 (2)文中的 [] 表示可选填写内容
