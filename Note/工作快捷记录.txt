@@ -1,0 +1,6 @@
+#TX2测试机器登录
+ssh nvidia@10.8.115.168
+账户名nvidia
+密码nvidia
+
+#

@@ -2,7 +2,8 @@
 
 extern StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters );
 
-TaskHandle_t xTaskCreateStatic( TaskFunction_t pxTaskCode,
+TaskHandle_t xTaskCreateStatic(
+								TaskFunction_t pxTaskCode,
 								const char * const pcName,//任务名称，字符串形式，方便调试
 								const uint32_t ulStackDepth,//任务栈大小，单位为字
 								void * const pvParameters,//形参
@@ -25,7 +26,8 @@ TaskHandle_t xTaskCreateStatic( TaskFunction_t pxTaskCode,
 }
 
 /*创建任务*/
-static void prvInitialiseNewTask( TaskFunction_t pxTaskCode,//任务入口，即任务的函数名称
+static void prvInitialiseNewTask( 
+																	TaskFunction_t pxTaskCode,//任务入口，即任务的函数名称
 																	const char * const pcName,//任务名称，字符串形式，方便调试
 																	const uint32_t ulStackDepth,//任务栈大小，单位为字
 																	void * const pvParameters,

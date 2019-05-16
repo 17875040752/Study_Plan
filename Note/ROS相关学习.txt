@@ -44,5 +44,6 @@
     sudo make install
     ```
 ##ROS单独编译一个包
-catkin_make  -DCATKIN_WHITELIST_PACKAGES="beginner_tutorials"
-catkin_make -DPROJECT_PACKAGE_DIR="gwtj_task_control"
+catkin_make -DCATKIN_WHITELIST_PACKAGES= "agv_task_control_msg" -DPROJECT_PACKAGE_DIR="gwtj_task_control"
+catkin_make -DCATKIN_WHITELIST_PACKAGES="agv_iot_communicate" -DPROJECT_PACKAGE_DIR="gwtj_task_control"
+catkin_make -DCATKIN_WHITELIST_PACKAGES="agv_task_control" -DPROJECT_PACKAGE_DIR="gwtj_task_control"
