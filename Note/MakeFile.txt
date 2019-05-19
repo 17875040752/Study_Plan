@@ -1,0 +1,71 @@
+1、语法######################################################
+(1)格式
+target:prerequisites 
+	command_1
+lable:
+	command_2
+(2)示例
+<1>
+main.o:main.c test.h
+	cc -c main.c
+clear:
+	rm main.o
+(3)相关说明
+	<1>target目标文件;
+		prerequisites依赖关系；
+		command执行的shell命令,其中command前面一定是一个tab命令开头的。
+	<2>使用make指令时候将会自动查找依赖关系，查找不到就直接退出工作
+	<3>lable不是目标文件，而是一个标记位置，其后没有依赖关系，使用make lable命令进行调用其后脚本
+
+2、变量##################################################
+(1)声明 
+name = value
+(2)使用
+$(name)
+(3)示例
+objects = main.o kbd.o command.o display.o \
+		 insert.osearch.o files.o utils.o 
+edit : $(objects)
+	cc -o edit $(objects)
+	
+3、make的自动的自动推导功能##############################
+示例可以写成：
+	main.o:main.c test.h
+从而省略后面的commond。
+
+4、清空函数的编写######################################
+.PHONY : clean
+	clean : 
+		-rm edit $(objects)
+
+5、命名规则#######################################
+<1>一般make默认加载Makefile或者makefile文件
+<2>指定文件名 make --file My_MakeFile
+
+6、包含指令include################################
+(1)示例: include TestMakeFile.foo
+(2)-include file_01 file_02 file_03忽略没有找到的文件
+
+7、vpath文件的自动搜索  ###################################
+(1)vpath < pattern> < directories>    为符合模式< pattern>的文件指定搜索目录<directories>
+(2)示例
+   vpath %.c foo
+   vpath %   blish
+   vpath %.c bar
+其表示“.c”结尾的文件，先在“foo”目录，然后是“blish”，最后是“bar”目录。
+   vpath %.c foo:bar
+   vpath %   blish
+而上面的语句则表示“.c”结尾的文件，先在“foo”目录，然后是“bar”目录，最后才是“blish”目录。
+
+8、符号####################################################
+(1)*  表示统配符号，但是用在变量定义的时候并不会展开，如：object = *.o ，$(object)实际上它的值就是*.o;
+   object = $(wildcard *.o)则是将*展开。如果定义有test-0.o test-1.o,那最终展开得到这两个文件。
+   
+9、伪目标
+
+
+
+
+
+
+
