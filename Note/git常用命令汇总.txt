@@ -1,49 +1,90 @@
-﻿(1)笔记来源 https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192
+﻿笔记来源 https://www.liaoxuefeng.com/wiki/896043488029600/897013573512192
 
-(2)登录
-git config [--global] user.name "name"
-git config [--global] user.email "test@xx.com"
+##################################第一部分：本地仓库的基本维护##############################
+0、相关
+<1>HEAD 当前指向的版本
 
-(3)查看当前登录的账号
-git config [--global] user.name 
-git config [--global] user.email 
+1、基本环境配置
+(1)登录
+	git config [--global] user.name "name"
+	git config [--global] user.email ""
+	
+(2)查看当前用户
+	git config user.name
+	git config user.email
+	
+2、创建本地的版本库
+(1)git init 初始化仓库
+(2)git add <file> 将工作区中的文件提交到缓冲区中
+(3)git commit -m <msg> 将缓冲区中的文件提交到本地的把版本库中
 
-(4)提交到本地仓库
-git add <file>  #将文件添加到版本库中
-git commit -m <message>  {提交备注}  #将添加到版本库中的文件提交到仓库
+3、本地版本库基本维护
+<1>git log <--pretty=oneline> 查看提交的记录信息
+	commit  commit_id     用于版本管理
+	Author	name email
+	Date    日期
+	msg
+<2>git reset --hard HEAD^ 回退到前一个版本
+<3>git reset --hard commit_id
+<4>git reflog 查看用户的历史修改记录。3<1>中的不能查看回退之后的，该命令可以查看所有的记录
 
-(5)版本回退相关
-git log  查看本地仓库的提交信息 
-git log --pretty=oneline 查看本地仓库的提交信息 ，展示在一行内
-git reset --hard HEAD^ 回退到上一个版本
-git reset --hard HEAD^^ 回退到上上个版本...	
-git reset --hard <commit id>  回退到指定ID的版本
-git reflog  按照时间顺序查找提交的ID，这样就可以回到之前的任何版本
+4、工作区和暂存区
+<1>git status 查看本地版本库的修改情况
+<2>[工作区] --add--> [暂存区] --commit--> [本地库] --> [远程分支] -->[远程主干]
+<3>git diff HEAD -- <file>
 
-(6)修改管理
-git checkout -- <file>  将工作区间中的东西回退到编辑之前，暂存区域不为空，返回到暂存区的版本，否则返回仓库的版本
-git diff HEAD -- <file> 查看工作区和版本库之间的差异
-git reset HEAD <file>  add后，想要撤销暂存区中的内容，回退到版本库中的版本
+5、丢弃工作区总的内容 git checkout -- <file>
+<1>工作区中的内容还没添加到暂存区，那么直接导致工作区中的内容和本版库一致
+<2>工作区中的内容已经添加到暂存区域中，那么将会使工作区和暂存区域保持一致。
+git rm --cached <file>清空暂存区
 
-(7)删除文件
-git rm 确认删除
-git commit -m 提交删除
-git checkout -- <file> 撤销删除
+6、删除文件
+<1>首先手动删除工作区中的文件
+<2>git rm <file> 添加修改到缓冲区中
+<3>git commit -m <msg> 确认删除本地本版库中的文件
+<4>git checkout -- <file> 撤销删除
 
-(8)远程库
-git remote add origin https://github.com/17875040752/My_Study.git   将本地仓库关联远程仓库
-<1>git push -u origin master    -u参数用于第一次提交时候建立关系，以后提交只用如下
-<2>git push origin master
-（8）<1><2>命令格式：git push <远程项目> <分支名称>
 
-(9)分支
-git checkout -b dev 创建分支
-git branch 查看分支
-git checkout master 回到master
-git merge dev 把分支dev内容合并到master上面
+#######################################远程仓库维护#####################################
+7、将本地仓库和远程仓库关联
+git remote add origin <URL>
+ssh-keygen -t rsa -C "邮箱地址"，然后将在~/.ssh/*.pub文件中的内容添加到远程ssh-key中
 
-补充说明
-(1)HEAD表示当前版本
-(2)文中的 [] 表示可选填写内容
-(3)工作区 ==(git add ...)==> 暂存区  ==(git commit)==> 版本库
-(4)git commit 只能提交被添加了的东西
+8、将本地内容推送到远程
+git push origin master
+
+9、分支管理
+<1>创建并且切换到分支 git checkout -b <dev>
+等同于：
+git branch <dev>  
+git checkout <dev>
+
+<2>git branch 查看本地分支
+<3>合并 git merge <目标>
+说明：在当前分支上使用该命令后，当前分支和目标分支保持一致
+<4>删除分支 git branch -d <dev> 
+<5>查看修改图 git log --graph
+<6>git merge --no-ff -m <msg> <dev> 这种合并方式将会产生一个新的提交信息
+<7>暂存工作区
+git stash
+会将目前的工作区保存起来而不是放到暂存区中
+git stash list 查看暂存工作区中的内容
+git stash pop 将暂存工作区中的内容恢复到工作区中
+<8>git branch -D <name> 其中大写的D表示强制删除
+<9>创建远程分支的本地分支 git checkout -b dev origin/dev
+<10>本地分支和远程分支关联
+建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name
+<11>将本修改提交到远程分支
+git push origin <branch-name-local>
+
+
+
+
+
+
+
+
+
+
+
+
