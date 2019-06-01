@@ -3,5 +3,6 @@
 
 #include "portmacro.h"
 
+BaseType_t xPortStartScheduler( void );
 
 #endif /* PORTABLE_H */

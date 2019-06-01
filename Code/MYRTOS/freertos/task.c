@@ -1,6 +1,14 @@
 #include "task.h"
+#include "FreeRTOS.h"
+
+/* 任务就绪列表 */
+List_t pxReadyTasksLists[ configMAX_PRIORITIES ];
+/* 当前正在运行的任务的任务控制块指针，默认初始化为NULL */
+TCB_t * volatile pxCurrentTCB = NULL;
 
 extern StackType_t *pxPortInitialiseStack( StackType_t *pxTopOfStack, TaskFunction_t pxCode, void *pvParameters );
+extern TCB_t Task1TCB;
+extern TCB_t Task2TCB;
 
 TaskHandle_t xTaskCreateStatic(
 								TaskFunction_t pxTaskCode,
@@ -24,6 +32,7 @@ TaskHandle_t xTaskCreateStatic(
 	
 	return xReturn;
 }
+
 
 /*创建任务*/
 static void prvInitialiseNewTask( 
@@ -57,3 +66,25 @@ static void prvInitialiseNewTask(
 	if ((TaskHandle_t)pxCreatedTask != NULL)
 		*pxCreatedTask = (TaskHandle_t) pxNewTCB;
 }
+
+//就绪队列
+void prvInitialseTaskLists(void)
+{
+	UBaseType_t uxPriority;
+	for(uxPriority = (UBaseType_t) 0U;uxPriority < (UBaseType_t) configMAX_PRIORITIES; uxPriority++)
+	{
+		vListInitialise(&(pxReadyTasksLists[uxPriority]));
+	}
+}
+
+//任务调度
+void vTaskStartScheduler(void)
+{
+	//手动启用任务1
+	pxCurrentTCB = &Task1TCB;
+	    /* 启动调度器 */
+   // if( xPortStartScheduler() != pdFALSE );
+	
+	
+}
+

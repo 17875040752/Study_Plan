@@ -2,8 +2,9 @@
 #define INC_FREERTOS_H
 
 #include "FreeRTOSConfig.h"
+#include "projdefs.h"
 #include "portable.h"
-
+#include "list.h"
 /* 节点结构体定义 */
 struct xLIST_ITEM
 {

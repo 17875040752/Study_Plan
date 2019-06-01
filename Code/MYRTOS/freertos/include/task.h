@@ -26,5 +26,12 @@ static void prvInitialiseNewTask( TaskFunction_t pxTaskCode,//任务入口，即任务的
 																	TaskHandle_t * const pxCreatedTask,
 																	TCB_t *pxNewTCB
 																);   
+																	
+//初始化就绪队列
+void prvInitialseTaskLists(void);
+																	
+//任务调度
+void vTaskStartScheduler(void);
+
 					
 #endif /* INC_TASK_H */ 

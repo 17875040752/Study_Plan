@@ -28,18 +28,54 @@ Project File Date:  05/12/2019
 *** Using Compiler 'V5.05 update 2 (build 169)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'Target 1'
 compiling port.c...
-linking...
-Program Size: Code=356 RO-data=224 RW-data=4 ZI-data=4196  
-".\Objects\YH-RT-Thread.axf" - 0 Error(s), 0 Warning(s).
+..\freertos\include\list.h(75): error:  #20: identifier "List_t" is undefined
+  void vListInitialise( List_t * const pxList );
+..\freertos\include\list.h(76): error:  #20: identifier "ListItem_t" is undefined
+  void vListInitialiseItem( ListItem_t * const pxItem );
+..\freertos\include\list.h(77): error:  #20: identifier "List_t" is undefined
+  void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(77): error:  #20: identifier "ListItem_t" is undefined
+  void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(78): error:  #20: identifier "List_t" is undefined
+  void vListInsert( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(78): error:  #20: identifier "ListItem_t" is undefined
+  void vListInsert( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(79): error:  #20: identifier "ListItem_t" is undefined
+  UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove );
+..\freertos\portable\RVDS\ARM_CM4\port.c(41): error:  #20: identifier "configKERNEL_INTERRUPT_PRIORITY" is undefined
+        
+ortNVIC_SYSPRI2_REG |= 
+ortNVIC_PENDSV_PRI;
+..\freertos\portable\RVDS\ARM_CM4\port.c(49): warning:  #1-D: last line of file ends without a newline
+  }
+..\freertos\portable\RVDS\ARM_CM4\port.c: 1 warning, 8 errors
+compiling list.c...
+..\freertos\include\list.h(75): error:  #20: identifier "List_t" is undefined
+  void vListInitialise( List_t * const pxList );
+..\freertos\include\list.h(76): error:  #20: identifier "ListItem_t" is undefined
+  void vListInitialiseItem( ListItem_t * const pxItem );
+..\freertos\include\list.h(77): error:  #20: identifier "List_t" is undefined
+  void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(77): error:  #20: identifier "ListItem_t" is undefined
+  void vListInsertEnd( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(78): error:  #20: identifier "List_t" is undefined
+  void vListInsert( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(78): error:  #20: identifier "ListItem_t" is undefined
+  void vListInsert( List_t * const pxList, ListItem_t * const pxNewListItem );
+..\freertos\include\list.h(79): error:  #20: identifier "ListItem_t" is undefined
+  UBaseType_t uxListRemove( ListItem_t * const pxItemToRemove );
+..\freertos\list.c: 0 warnings, 7 errors
+compiling task.c...
+".\Objects\YH-RT-Thread.axf" - 15 Error(s), 1 Warning(s).
 
 <h2>Software Packages used:</h2>
 
 Package Vendor: ARM
                 http://www.keil.com/pack/ARM.CMSIS.4.3.0.pack
-                ARM::CMSIS:CORE:4.1.0
+                ARM::Device:Startup:1.0.1
                 CMSIS (Cortex Microcontroller Software Interface Standard)
-   * Component: CORE Version: 4.1.0
    * Component: Startup Version: 1.0.1
+   * Component: CORE Version: 4.1.0
 
 <h2>Collection of Component include folders:</h2>
   D:\Study\Code\MYRTOS\Project\RTE
@@ -48,12 +84,13 @@ Package Vendor: ARM
 
 <h2>Collection of Component Files used:</h2>
 
-   * Component: ARM::CMSIS:CORE:4.1.0
-
    * Component: ARM::Device:Startup:1.0.1
-      Source file:   Device\ARM\ARMCM3\Source\system_ARMCM3.c
       Source file:   Device\ARM\ARMCM3\Source\ARM\startup_ARMCM3.s
       Include file:  Device\ARM\ARMCM3\Include\ARMCM3.h
+      Source file:   Device\ARM\ARMCM3\Source\system_ARMCM3.c
+
+   * Component: ARM::CMSIS:CORE:4.1.0
+Target not created.
 </pre>
 </body>
 </html>
